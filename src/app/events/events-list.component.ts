@@ -6,13 +6,13 @@ import { Component } from '@angular/core'
         <div>
             <h1>Upcoming Angular Events</h1>
             <hr />
-            <h2>{{event.name}}</h2>
+            <event-thumbnail [event]='event1' ></event-thumbnail>
         </div>
-    `
+    `,
 })
 
 export class EventsListComponent {
-    event = {
+    event1 = {
         id: 1,
         name: 'Angular Connect',
         date: '9/26/2036',
@@ -24,5 +24,7 @@ export class EventsListComponent {
           city: 'London',
           country: 'England'
         }
-      }
+    }
+
+
 }
