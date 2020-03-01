@@ -13,7 +13,7 @@ import {
   DurationPipe
 } from './events/index'
 
-import { ToastrService } from './common/toastr.service';
+import { TOASTR_TOKEN, Toastr, JQUERY_TOKEN, SimpleModalComponent, ModalTriggerDirective } from './common/index';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { EventsAppComponent } from './events-app.component';
@@ -23,7 +23,13 @@ import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// declare let toastr:Toastr
+// export const TOASTR_CONFIG: ToastrConfig = {
+//   toastr: toastr 
+// }
 
+let toastr:Toastr = window['toastr'];
+let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -37,7 +43,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     EventService,
-    ToastrService, 
+    { provide: TOASTR_TOKEN, useValue: toastr }, 
+    { provide: JQUERY_TOKEN, useValue: jQuery }, 
     EventRouteActivator,
     EventListResolver,
     AuthService,
@@ -65,3 +74,4 @@ export function checkDirtyState(component:CreateEventComponent) {
     return window.confirm('You have not saved this event, do you really want to cancel?')
   return true
 }
+
