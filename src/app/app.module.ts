@@ -12,7 +12,8 @@ import {
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
-  VoterService
+  VoterService,
+  LocationValidator
 } from './events/index'
 
 import { TOASTR_TOKEN, Toastr, JQUERY_TOKEN, SimpleModalComponent, ModalTriggerDirective } from './common/index';
@@ -48,7 +49,8 @@ let jQuery = window['$'];
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
-    UpvoteComponent
+    UpvoteComponent,
+    LocationValidator
   ],
   imports: [
     BrowserModule,
