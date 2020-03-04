@@ -6,14 +6,14 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
   VoterService,
-  LocationValidator
+  LocationValidator,
+  EventResolver
 } from './events/index'
 
 import { TOASTR_TOKEN, Toastr, JQUERY_TOKEN, SimpleModalComponent, ModalTriggerDirective } from './common/index';
@@ -25,6 +25,8 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 // declare let toastr:Toastr
 // export const TOASTR_CONFIG: ToastrConfig = {
@@ -56,13 +58,14 @@ let jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr }, 
     { provide: JQUERY_TOKEN, useValue: jQuery }, 
-    EventRouteActivator,
+    EventResolver,
     EventListResolver,
     AuthService,
     { 
