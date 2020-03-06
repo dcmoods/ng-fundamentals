@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { userRoutes } from './user.routes';
 import { ProfileComponent } from './profile.component';
 import { LoginComponent } from './login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { LoginComponent } from './login.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forChild(userRoutes)
+        RouterModule.forChild(userRoutes),
+        HttpClientModule
     ],
     declarations: [
         ProfileComponent,
